@@ -1,18 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Gif-tastic</title>
-  <link rel="stylesheet" href="">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" -->
+    <!-- integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
-  
+
+  <h1>Gif-tastic</h1>
+
+  <div class="container">
+
+    <!-- add topic form row -->
+    <div class="row">
+
+      <div class="input-field col s12 m8">
+
+        <input id="topic-added" type="text" class="validate">
+        <label for="add-topic">Topic to add</label>
+
+      </div>
+
+      <div class="col s12 m4">
+
+        <button class="btn waves-effect waves-light add-topic" type="submit" name="action">Add
+          <i class="material-icons right">send</i>
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- buttons row -->
+    <div class="row">
+
+      <div class="col s12">
+
+        <div class="buttons"></div>
+
+      </div>
+
+    </div>
+
+    <!-- gifs row -->
+    <div class="row">
+
+      <div class="col s12">
+
+        <div class="gifs"></div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
 
   <script src="./assets/javascript/app.js"></script>
 </body>
+
 </html>
