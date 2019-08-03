@@ -54,7 +54,7 @@ $(document).ready(function () {
           "src": element.images.fixed_height_still.url,
           "data-state": "still"
         })
-        .css("margin", "7px")
+        // .css("margin", "7px")
         .on("click", function () {
 
           const $this = $(this);
@@ -78,9 +78,20 @@ $(document).ready(function () {
 
         let $p = $("<p>")
                   .text(`Rated: ${element.rating}`)
+                  .css("margin", "10px")
+
+        let divWidth = element.images.fixed_height.width
+          divWidth = parseInt(divWidth) + 2;
 
         $div.append($img)
             .append($p)
+            .css({
+              "width": `${divWidth}px`,
+              "margin": "5px",
+              "border": "1px solid #cccccc",
+              // "border-radius": "5px",
+              
+            })
             
 
       $("div.gifs").prepend($div);
