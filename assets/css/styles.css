@@ -1,0 +1,26 @@
+h1 {
+  padding: 20px;
+  margin-top: 0;
+  text-align: center;
+  background: #022c4e;
+  color: #ffffff;
+}
+
+button {
+  margin: 5px;
+  padding: 10px;
+  background: #022c4e;
+  color: #ffffff;
+}
+
+div.buttons {
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  padding: 10px;
+}
+
+div.bordered {
+  border: "1px solid #cccccc";
+  border-radius: "5px";
+}
+
