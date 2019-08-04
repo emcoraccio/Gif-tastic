@@ -34,8 +34,8 @@ $(document).ready(function () {
             "border": "1px solid #cccccc",
             "border-radius": "5px",
           });
+
           offset += 10
-          console.log(offset);
           $(this).attr("data-offset", offset)
         });
 
@@ -126,10 +126,10 @@ $(document).ready(function () {
   let getData = function () {
 
     let queryURL = `https://api.giphy.com/v1/gifs/search?api_key=VLqldkemP275IXS3xDTcJ0dsKqDaP2zN&q=${q}&limit=10&offset=${offset}`
-
+    
     $.get(queryURL).then(function (response) {
       gifData = response.data
-
+      
       displayGifs(gifData);
     });
 
