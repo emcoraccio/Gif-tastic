@@ -3,6 +3,7 @@ let queryURL;
 let gifData;
 let q;
 let divWidth;
+let offset;
 
 
 $(document).ready(function () {
@@ -17,6 +18,7 @@ $(document).ready(function () {
       let btn = $("<button>")
         .text(element)
         .addClass("hoverable")
+        .attr("data-offset", "0")
         .css({
           "cursor": "pointer",
           "font-family": "'Red Hat Display', sans-serif"
@@ -24,13 +26,17 @@ $(document).ready(function () {
         .on("click", function () {
 
           q = $(this).text();
-          getData();
+          offset = parseInt($(this).attr("data-offset"))
 
+          getData();
+          
           $("div.gifs").css({
             "border": "1px solid #cccccc",
             "border-radius": "5px",
           });
-
+          offset += 10
+          console.log(offset);
+          $(this).attr("data-offset", offset)
         });
 
       $("div.buttons").append(btn)
@@ -119,7 +125,7 @@ $(document).ready(function () {
 
   let getData = function () {
 
-    let queryURL = `https://api.giphy.com/v1/gifs/search?api_key=VLqldkemP275IXS3xDTcJ0dsKqDaP2zN&q=${q}&limit=10`
+    let queryURL = `https://api.giphy.com/v1/gifs/search?api_key=VLqldkemP275IXS3xDTcJ0dsKqDaP2zN&q=${q}&limit=10&offset=${offset}`
 
     $.get(queryURL).then(function (response) {
       gifData = response.data
