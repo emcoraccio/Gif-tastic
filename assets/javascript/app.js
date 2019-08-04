@@ -2,29 +2,25 @@ let topics = ["donuts", "bread", "cookies", "snacks", "pizza"]
 let queryURL;
 let gifData;
 let q;
-
-
-// params = {
-//   "key": "VLqldkemP275IXS3xDTcJ0dsKqDaP2zN",
-//   "q": ""
-// }
-
-// $.param(object)
-
+let divWidth;
 
 
 $(document).ready(function () {
 
+  // function to set the buttons from the topics array to the page
   let setButtons = function () {
 
     $("div.buttons").empty()
-    
+
     topics.forEach(element => {
 
       let btn = $("<button>")
         .text(element)
         .addClass("hoverable")
-        .css("cursor", "pointer")
+        .css({
+          "cursor": "pointer",
+          "font-family": "'Red Hat Display', sans-serif"
+        })
         .on("click", function () {
 
           q = $(this).text();
@@ -32,7 +28,7 @@ $(document).ready(function () {
 
           $("div.gifs").css({
             "border": "1px solid #cccccc",
-            "border-radius": "5px"
+            "border-radius": "5px",
           });
 
         });
@@ -44,11 +40,12 @@ $(document).ready(function () {
 
   setButtons();
 
-  let addButton = function() {
+  //function which takes input from form and adds button to page
+  let addButton = function () {
 
     let addedTopic = $("input#topic").val().trim();
-    
-    if(!topics.includes(addedTopic)) {
+
+    if (!topics.includes(addedTopic)) {
       topics.push(addedTopic);
     }
 
@@ -56,15 +53,15 @@ $(document).ready(function () {
 
   }
 
-
+  //function to display the gifs on the page
   let displayGifs = (data) => {
-    console.log(data);
 
-
+    // loop through array of data and display images and ratings for each of the gifs
     data.forEach(element => {
 
       let $div = $("<div>");
 
+      // create initial image and set it to the still image
       let $img = $("<img>")
         .attr({
           "src": element.images.fixed_height_still.url,
@@ -93,14 +90,12 @@ $(document).ready(function () {
           }
         });
 
-        //adding rating to a new p
+      //adding rating to a new p
       let $p = $("<p>")
         .text(`Rated: ${element.rating}`)
         .css("margin", "10px")
 
-      let divWidth = element.images.fixed_height.width
-      divWidth = parseInt(divWidth) + 2;
-
+      divWidth = parseInt(element.images.fixed_height.width) + 2
 
       $div.append($img)
         .append($p)
@@ -141,6 +136,5 @@ $(document).ready(function () {
     addButton();
 
   });
-
 
 });

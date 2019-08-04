@@ -1,7 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Red+Hat+Display|Saira+Stencil+One&display=swap');
+
+
+body {
+  font-family: 'Red Hat Display', sans-serif;
+}
+
 h1 {
   padding: 20px;
   margin-top: 0;
   text-align: center;
+  font-family: 'Saira Stencil One', cursive;
   background: #022c4e;
   color: #ffffff;
 }
@@ -19,8 +27,6 @@ div.buttons {
   padding: 10px;
 }
 
-@media screen and (max-width: 640px) {
-  div.gifs {
-    margin: auto;
-  }
+.clearfix {
+  overflow: auto;
 }
