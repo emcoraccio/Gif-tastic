@@ -17,11 +17,14 @@ $(document).ready(function () {
 
   let setButtons = function () {
 
+    $("div.buttons").empty()
+    
     topics.forEach(element => {
 
       let btn = $("<button>")
         .text(element)
         .addClass("hoverable")
+        .css("cursor", "pointer")
         .on("click", function () {
 
           q = $(this).text();
@@ -41,9 +44,22 @@ $(document).ready(function () {
 
   setButtons();
 
+  let addButton = function() {
+
+    let addedTopic = $("input#topic").val().trim();
+    
+    if(!topics.includes(addedTopic)) {
+      topics.push(addedTopic);
+    }
+
+    setButtons();
+
+  }
+
 
   let displayGifs = (data) => {
     console.log(data);
+
 
     data.forEach(element => {
 
@@ -54,7 +70,9 @@ $(document).ready(function () {
           "src": element.images.fixed_height_still.url,
           "data-state": "still"
         })
-        // .css("margin", "7px")
+        .css("cursor", "pointer")
+
+        //swapping between still and animated images on img click
         .on("click", function () {
 
           const $this = $(this);
@@ -65,8 +83,7 @@ $(document).ready(function () {
               "src": element.images.fixed_height.url,
               "data-state": "moving"
             })
-          }
-          else {
+          } else {
 
             $this.attr({
               "src": element.images.fixed_height_still.url,
@@ -76,23 +93,27 @@ $(document).ready(function () {
           }
         });
 
-        let $p = $("<p>")
-                  .text(`Rated: ${element.rating}`)
-                  .css("margin", "10px")
+        //adding rating to a new p
+      let $p = $("<p>")
+        .text(`Rated: ${element.rating}`)
+        .css("margin", "10px")
 
-        let divWidth = element.images.fixed_height.width
-          divWidth = parseInt(divWidth) + 2;
+      let divWidth = element.images.fixed_height.width
+      divWidth = parseInt(divWidth) + 2;
 
-        $div.append($img)
-            .append($p)
-            .css({
-              "width": `${divWidth}px`,
-              "margin": "5px",
-              "border": "1px solid #cccccc",
-              // "border-radius": "5px",
-              
-            })
-            
+
+      $div.append($img)
+        .append($p)
+        .css({
+          "width": `${divWidth}px`,
+          "margin": "5px",
+          "border": "1px solid #cccccc",
+          "float": "left",
+          "background": "#263238",
+          "color": "#ffffff"
+
+        })
+
 
       $("div.gifs").prepend($div);
 
@@ -103,7 +124,7 @@ $(document).ready(function () {
 
   let getData = function () {
 
-    let queryURL = `https://api.giphy.com/v1/gifs/search?api_key=VLqldkemP275IXS3xDTcJ0dsKqDaP2zN&q=${q}`
+    let queryURL = `https://api.giphy.com/v1/gifs/search?api_key=VLqldkemP275IXS3xDTcJ0dsKqDaP2zN&q=${q}&limit=10`
 
     $.get(queryURL).then(function (response) {
       gifData = response.data
@@ -117,6 +138,7 @@ $(document).ready(function () {
   $("button.add-topic").on("click", function (event) {
     event.preventDefault();
 
+    addButton();
 
   });
 

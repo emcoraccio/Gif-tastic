@@ -9,7 +9,7 @@ h1 {
 button {
   margin: 5px;
   padding: 10px;
-  background-color: #022c4e;
+  background: #022c4e;
   color: #ffffff;
 }
 
@@ -19,3 +19,8 @@ div.buttons {
   padding: 10px;
 }
 
+@media screen and (max-width: 640px) {
+  div.gifs {
+    margin: auto;
+  }
+}
